@@ -91,7 +91,7 @@ export function WhatsAppDemo() {
     return (
         <div className="w-[350px] sm:w-[400px] md:w-[434px] shadow-[0_0_40px_rgba(32,44,51,0.5)] rounded-[40px] transform-gpu">
             <Iphone>
-                <div className="flex h-full w-full flex-col bg-[#E5E5EA] dark:bg-[#000000] pb-[30px] font-sans">
+                <div className="flex h-full w-full flex-col bg-[#E5E5EA] dark:bg-[#000000] font-sans">
                     {/* Header - iOS Style */}
                     <div className="flex flex-col bg-[#f6f6f6]/95 dark:bg-[#1c1c1e]/95 backdrop-blur-md z-10 sticky top-0 border-b border-gray-200/50 dark:border-gray-800/50">
                         {/* Fake iOS Status Bar */}
@@ -208,7 +208,7 @@ export function WhatsAppDemo() {
                     </div>
 
                     {/* Input Area - Current iOS Style */}
-                    <div className="flex items-end gap-2 bg-[#f6f6f6] dark:bg-[#1c1c1e] px-2 py-[8px] z-10 relative border-t border-gray-200/60 dark:border-gray-800/60">
+                    <div className="flex items-end gap-2 bg-[#f6f6f6] dark:bg-[#1c1c1e] px-2 pt-[8px] pb-[38px] z-10 relative border-t border-gray-200/60 dark:border-gray-800/60">
                         <div className="text-[#00A884] pb-[7px] pl-1 cursor-pointer">
                             <Plus className="h-[28px] w-[28px]" strokeWidth={2} />
                         </div>
