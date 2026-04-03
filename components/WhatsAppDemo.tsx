@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Iphone } from "@/components/ui/iphone";
 import { Send, Phone, Video, ChevronLeft, MoreVertical } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface Message {
@@ -26,6 +25,13 @@ export function WhatsAppDemo() {
     ]);
     const [inputText, setInputText] = useState("");
     const [isSending, setIsSending] = useState(false);
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+        }
+    }, [messages, isSending]);
 
     const handleSend = async () => {
         if (!inputText.trim() || isSending) return;
@@ -105,7 +111,7 @@ export function WhatsAppDemo() {
                     </div>
 
                     {/* Chat Area */}
-                    <ScrollArea className="flex-1 px-4 relative bg-[#0b141a]">
+                    <div ref={scrollRef} className="flex-1 px-4 relative bg-[#0b141a] overflow-y-auto scroll-smooth">
                         {/* WhatsApp pattern overlay */}
                         <div
                             className="absolute inset-0 opacity-10 pointer-events-none z-0"
@@ -138,7 +144,7 @@ export function WhatsAppDemo() {
                                 </div>
                             )}
                         </div>
-                    </ScrollArea>
+                    </div>
 
                     {/* Input Area */}
                     <div className="flex items-end gap-2 bg-[#f0f2f5] dark:bg-[#202c33] px-3 py-[10px] z-10 relative">
