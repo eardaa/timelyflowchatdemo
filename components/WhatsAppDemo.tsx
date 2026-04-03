@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Iphone } from "@/components/ui/iphone";
-import { Send, Phone, Video, ChevronLeft, Plus, Camera, CheckCheck, Sticker } from "lucide-react";
+import { Send, Phone, Video, ChevronLeft, Plus, Camera, CheckCheck, Sticker, Signal, Wifi, BatteryFull } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface Message {
@@ -93,8 +93,20 @@ export function WhatsAppDemo() {
             <Iphone>
                 <div className="flex h-full w-full flex-col bg-[#E5E5EA] dark:bg-[#000000] pb-[30px] font-sans">
                     {/* Header - iOS Style */}
-                    <div className="flex items-center justify-between bg-[#f6f6f6]/95 dark:bg-[#1c1c1e]/95 backdrop-blur-md px-1 pt-14 pb-2.5 z-10 sticky top-0 border-b border-gray-200/50 dark:border-gray-800/50">
-                        <div className="flex items-center cursor-pointer">
+                    <div className="flex flex-col bg-[#f6f6f6]/95 dark:bg-[#1c1c1e]/95 backdrop-blur-md z-10 sticky top-0 border-b border-gray-200/50 dark:border-gray-800/50">
+                        {/* Fake iOS Status Bar */}
+                        <div className="flex justify-between items-end px-8 pt-[14px] pb-[8px] w-full text-black dark:text-white h-[54px]">
+                            <span className="text-[15px] font-semibold tracking-tight leading-none mb-[2px]">9:41</span>
+                            <div className="flex items-center gap-1.5 mb-[1px]">
+                                <Signal className="w-[16px] h-[16px]" strokeWidth={2.5} />
+                                <Wifi className="w-[16px] h-[16px]" strokeWidth={2.5} />
+                                <BatteryFull className="w-[23px] h-[23px] -mr-1" strokeWidth={2} />
+                            </div>
+                        </div>
+
+                        {/* WhatsApp Header Content */}
+                        <div className="flex items-center justify-between px-1 pt-1 pb-2.5">
+                            <div className="flex items-center cursor-pointer">
                             <div className="flex items-center text-[#00A884]">
                                 <ChevronLeft className="h-8 w-8 -mr-1" strokeWidth={2} />
                             </div>
@@ -110,6 +122,7 @@ export function WhatsAppDemo() {
                         <div className="flex items-center gap-5 text-[#00A884] pr-4">
                             <Video className="h-[24px] w-[24px] cursor-pointer" strokeWidth={1.5} />
                             <Phone className="h-[22px] w-[22px] cursor-pointer" strokeWidth={1.5} />
+                        </div>
                         </div>
                     </div>
 
