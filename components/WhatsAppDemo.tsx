@@ -88,7 +88,7 @@ export function WhatsAppDemo() {
     };
 
     return (
-        <div className="w-[350px] sm:w-[400px] md:w-[434px] drop-shadow-[0_0_40px_rgba(32,44,51,0.5)]">
+        <div className="w-[350px] sm:w-[400px] md:w-[434px] shadow-[0_0_40px_rgba(32,44,51,0.5)] rounded-[40px] transform-gpu">
             <Iphone>
                 <div className="flex h-full w-full flex-col bg-[#efeae2] dark:bg-[#0b141a] pt-14 pb-[30px]">
                     {/* Header */}
@@ -96,8 +96,8 @@ export function WhatsAppDemo() {
                         <div className="flex items-center gap-2">
                             <ChevronLeft className="h-6 w-6 text-[#54656f] dark:text-[#aebac1] -ml-2 cursor-pointer" />
                             <Avatar className="h-10 w-10">
-                                <AvatarImage src="https://ui.shadcn.com/avatars/02.png" />
-                                <AvatarFallback>BT</AvatarFallback>
+                                <AvatarImage src="/timelyflownew.jpg" />
+                                <AvatarFallback>TF</AvatarFallback>
                             </Avatar>
                             <div className="ml-1 cursor-pointer">
                                 <h3 className="text-[17px] font-medium leading-5 text-[#111b21] dark:text-[#e9edef] overflow-hidden text-ellipsis whitespace-nowrap">TimelyFlow Assistant</h3>
@@ -111,11 +111,11 @@ export function WhatsAppDemo() {
                     </div>
 
                     {/* Chat Area */}
-                    <div ref={scrollRef} className="flex-1 px-4 relative bg-[#0b141a] overflow-y-auto scroll-smooth">
+                    <div ref={scrollRef} className="flex-1 px-4 relative bg-[#0b141a] overflow-y-auto will-change-scroll overscroll-contain">
                         {/* WhatsApp pattern overlay */}
                         <div
                             className="absolute inset-0 opacity-10 pointer-events-none z-0"
-                            style={{ backgroundImage: "url('https://static.whatsapp.net/rsrc.php/v3/yl/r/rro_BxtZ_w4.png')", backgroundSize: "cover" }}
+                            style={{ backgroundImage: "url('https://static.whatsapp.net/rsrc.php/v3/yl/r/rro_BxtZ_w4.png')", backgroundSize: "cover", willChange: "transform" }}
                         />
                         <div className="flex flex-col gap-[6px] relative z-10 py-4">
                             {messages.map((msg) => (
