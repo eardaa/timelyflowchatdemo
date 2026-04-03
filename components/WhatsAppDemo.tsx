@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Iphone } from "@/components/ui/iphone";
-import { Send, Phone, Video, ChevronLeft, Plus, Camera, Smile, CheckCheck } from "lucide-react";
+import { Send, Phone, Video, ChevronLeft, Plus, Camera, CheckCheck, Sticker } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface Message {
@@ -25,6 +25,9 @@ export function WhatsAppDemo() {
     const [inputText, setInputText] = useState("");
     const [isSending, setIsSending] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
+
+    // WhatsApp's new iOS tint color
+    const tintColor = "#00A884"; 
 
     useEffect(() => {
         if (scrollRef.current) {
@@ -88,40 +91,40 @@ export function WhatsAppDemo() {
     return (
         <div className="w-[350px] sm:w-[400px] md:w-[434px] shadow-[0_0_40px_rgba(32,44,51,0.5)] rounded-[40px] transform-gpu">
             <Iphone>
-                <div className="flex h-full w-full flex-col bg-[#efeae2] dark:bg-[#0b141a] pt-12 pb-[30px] font-sans">
-                    {/* Header */}
-                    <div className="flex items-center justify-between bg-[#f0f2f5] dark:bg-[#202c33] px-2 py-2 shadow-sm z-10 sticky top-0">
-                        <div className="flex items-center gap-1 cursor-pointer">
-                            <div className="flex items-center -ml-1 text-[#00a884] dark:text-[#00a884]">
-                                <ChevronLeft className="h-7 w-7" />
+                <div className="flex h-full w-full flex-col bg-[#E5E5EA] dark:bg-[#000000] pt-12 pb-[30px] font-sans">
+                    {/* Header - iOS Style */}
+                    <div className="flex items-center justify-between bg-[#f6f6f6]/95 dark:bg-[#1c1c1e]/95 backdrop-blur-md px-1 py-2.5 z-10 sticky top-0 border-b border-gray-200/50 dark:border-gray-800/50">
+                        <div className="flex items-center cursor-pointer">
+                            <div className="flex items-center text-[#00A884]">
+                                <ChevronLeft className="h-8 w-8 -mr-1" strokeWidth={2} />
                             </div>
-                            <Avatar className="h-9 w-9 border border-gray-200 dark:border-none">
+                            <Avatar className="h-[38px] w-[38px] ml-1">
                                 <AvatarImage src="/timelyflownew.jpg" />
                                 <AvatarFallback>TF</AvatarFallback>
                             </Avatar>
-                            <div className="ml-2">
-                                <h3 className="text-[16px] font-medium leading-5 text-[#111b21] dark:text-[#e9edef] overflow-hidden text-ellipsis whitespace-nowrap">TimelyFlow</h3>
-                                <p className="text-[12px] text-[#667781] dark:text-[#8696a0] mt-[1px]">online</p>
+                            <div className="ml-2.5 flex flex-col justify-center">
+                                <h3 className="text-[16px] font-semibold tracking-tight text-black dark:text-white leading-5">TimelyFlow</h3>
+                                <p className="text-[12px] text-gray-500 dark:text-gray-400 mt-[1px]">çevrimiçi</p>
                             </div>
                         </div>
-                        <div className="flex items-center gap-5 text-[#54656f] dark:text-[#aebac1] pr-2">
-                            <Video className="h-[22px] w-[22px] cursor-pointer hover:text-[#00a884]" />
-                            <Phone className="h-[20px] w-[20px] cursor-pointer hover:text-[#00a884]" />
+                        <div className="flex items-center gap-5 text-[#00A884] pr-4">
+                            <Video className="h-[24px] w-[24px] cursor-pointer" strokeWidth={1.5} />
+                            <Phone className="h-[22px] w-[22px] cursor-pointer" strokeWidth={1.5} />
                         </div>
                     </div>
 
                     {/* Chat Area */}
-                    <div ref={scrollRef} className="flex-1 px-4 relative bg-[#efeae2] dark:bg-[#0b141a] overflow-y-auto will-change-scroll overscroll-contain">
-                        {/* WhatsApp pattern overlay */}
+                    <div ref={scrollRef} className="flex-1 px-3 relative bg-[#e5e5ea] dark:bg-[#000000] overflow-y-auto will-change-scroll overscroll-contain">
+                        {/* WhatsApp iOS pattern overlay */}
                         <div
-                            className="absolute inset-0 opacity-40 dark:opacity-10 pointer-events-none z-0 bg-repeat"
+                            className="absolute inset-0 opacity-[0.35] dark:opacity-10 pointer-events-none z-0 bg-repeat"
                             style={{ backgroundImage: "url('https://static.whatsapp.net/rsrc.php/v3/yl/r/rro_BxtZ_w4.png')", backgroundSize: "300px" }}
                         />
                         <div className="flex flex-col gap-[2px] relative z-10 py-4">
-                            {/* Date Badge */}
+                            {/* Date Badge iOS style */}
                             <div className="flex justify-center mb-4 mt-2">
-                                <span className="bg-white/90 dark:bg-[#182229]/90 text-[#54656f] dark:text-[#8696a0] text-[12px] px-3 py-1 rounded-lg shadow-sm">
-                                    BUGÜN
+                                <span className="bg-[#f0f0f0] dark:bg-[#1c1c1e] text-gray-500 dark:text-gray-400 text-[11px] font-medium px-3 py-1 rounded-lg">
+                                    Bugün
                                 </span>
                             </div>
 
@@ -134,38 +137,38 @@ export function WhatsAppDemo() {
                                         className={`flex ${msg.sender === "me" ? "justify-end" : "justify-start"} ${isFirstInGroup ? "mt-2" : "mt-[2px]"}`}
                                     >
                                         <div
-                                            className={`relative max-w-[85%] rounded-[8px] px-[9px] py-[6px] text-[14.5px] shadow-[0_1px_0.5px_rgba(11,20,26,0.13)] ${msg.sender === "me"
-                                                    ? "bg-[#d9fdd3] text-[#111b21] dark:bg-[#005c4b] dark:text-[#e9edef]"
-                                                    : "bg-white text-[#111b21] dark:bg-[#202c33] dark:text-[#e9edef]"
-                                                } ${isFirstInGroup ? (msg.sender === "me" ? "rounded-tr-none" : "rounded-tl-none") : ""}`}
+                                            className={`relative max-w-[80%] px-[12px] py-[7px] text-[15px] shadow-[0_1px_1px_rgba(0,0,0,0.05)] ${msg.sender === "me"
+                                                    ? "bg-[#e2ffc7] dark:bg-[#005c4b] text-black dark:text-white rounded-[14px]"
+                                                    : "bg-white dark:bg-[#202c33] text-black dark:text-white rounded-[14px]"
+                                                } ${isFirstInGroup ? (msg.sender === "me" ? "rounded-tr-[4px]" : "rounded-tl-[4px]") : ""}`}
                                         >
-                                            {/* Chat Bubble Tail */}
+                                            {/* Chat Bubble Tail - iOS Style (Top Corner) */}
                                             {isFirstInGroup && msg.sender === "me" && (
-                                                <div className="absolute top-0 right-[-8px] text-[#d9fdd3] dark:text-[#005c4b]">
-                                                    <svg viewBox="0 0 8 13" width="8" height="13" fill="currentColor">
-                                                        <path d="M5.188 1H0v11.193l6.467-8.625C7.526 2.156 6.958 1 5.188 1z" />
+                                                <div className="absolute top-0 right-[-6px] text-[#e2ffc7] dark:text-[#005c4b]">
+                                                    <svg viewBox="0 0 11 13" width="11" height="13" fill="currentColor">
+                                                        <path d="M11 0C8.5 0 6 0 4.5 0C3 0 1 1 0 3C2 3 5 5 5 13C5 7 8 1.5 11 0Z" />
                                                     </svg>
                                                 </div>
                                             )}
                                             {isFirstInGroup && msg.sender === "other" && (
-                                                <div className="absolute top-0 left-[-8px] text-white dark:text-[#202c33]">
-                                                    <svg viewBox="0 0 8 13" width="8" height="13" fill="currentColor">
-                                                        <path d="M5.188 1H0v11.193l6.467-8.625C7.526 2.156 6.958 1 5.188 1z" transform="matrix(-1 0 0 1 8 0)" />
+                                                <div className="absolute top-0 left-[-6px] text-white dark:text-[#202c33]">
+                                                    <svg viewBox="0 0 11 13" width="11" height="13" fill="currentColor">
+                                                        <path d="M0 0C2.5 0 5 0 6.5 0C8 0 10 1 11 3C9 3 6 5 6 13C6 7 3 1.5 0 0Z" />
                                                     </svg>
                                                 </div>
                                             )}
 
-                                            <p className="leading-[19px] whitespace-pre-wrap word-break pb-[10px]">
+                                            <p className="leading-[21px] whitespace-pre-wrap word-break pb-[8px]">
                                                 {msg.text}
-                                                <span className="inline-block w-[60px]" /> {/* Spacer for time/ticks */}
+                                                <span className="inline-block w-[65px]" />
                                             </p>
                                             
-                                            <div className="absolute bottom-[3px] right-[7px] flex items-center gap-1">
-                                                <span className="text-[10.5px] text-[#667781] dark:text-[rgba(255,255,255,0.6)]">
+                                            <div className="absolute bottom-[4px] right-[8px] flex items-center gap-1">
+                                                <span className="text-[11px] text-[#8e8e93] dark:text-[rgba(255,255,255,0.5)]">
                                                     {msg.time}
                                                 </span>
                                                 {msg.sender === "me" && (
-                                                    <CheckCheck className={`h-[14px] w-[14px] ${msg.status === 'read' ? 'text-[#53bdeb]' : 'text-[#667781]'}`} strokeWidth={2.5} />
+                                                    <CheckCheck className={`h-[15px] w-[15px] ${msg.status === 'read' ? 'text-[#34B7F1]' : 'text-[#8e8e93]'}`} strokeWidth={2.5} />
                                                 )}
                                             </div>
                                         </div>
@@ -174,16 +177,16 @@ export function WhatsAppDemo() {
                             })}
                             {isSending && (
                                 <div className="flex justify-start mt-2">
-                                    <div className="relative max-w-[85%] bg-white dark:bg-[#202c33] text-[#111b21] dark:text-[#e9edef] rounded-[8px] rounded-tl-none px-[12px] py-[8px] text-[14.5px] shadow-[0_1px_0.5px_rgba(11,20,26,0.13)]">
-                                        <div className="absolute top-0 left-[-8px] text-white dark:text-[#202c33]">
-                                            <svg viewBox="0 0 8 13" width="8" height="13" fill="currentColor">
-                                                <path d="M5.188 1H0v11.193l6.467-8.625C7.526 2.156 6.958 1 5.188 1z" transform="matrix(-1 0 0 1 8 0)" />
+                                    <div className="relative max-w-[80%] bg-white dark:bg-[#202c33] text-black dark:text-white rounded-[14px] rounded-tl-[4px] px-[14px] py-[10px] text-[15px] shadow-[0_1px_1px_rgba(0,0,0,0.05)]">
+                                        <div className="absolute top-0 left-[-6px] text-white dark:text-[#202c33]">
+                                            <svg viewBox="0 0 11 13" width="11" height="13" fill="currentColor">
+                                                <path d="M0 0C2.5 0 5 0 6.5 0C8 0 10 1 11 3C9 3 6 5 6 13C6 7 3 1.5 0 0Z" />
                                             </svg>
                                         </div>
-                                        <div className="flex items-center gap-1 opacity-60">
-                                            <span className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                                            <span className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                                            <span className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                                        <div className="flex items-center gap-1.5 opacity-50">
+                                            <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                                            <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                                            <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                                         </div>
                                     </div>
                                 </div>
@@ -191,13 +194,12 @@ export function WhatsAppDemo() {
                         </div>
                     </div>
 
-                    {/* Input Area */}
-                    <div className="flex items-end gap-2 bg-[#f0f2f5] dark:bg-[#202c33] px-2 py-[8px] z-10 relative">
-                        <div className="text-[#54656f] dark:text-[#aebac1] pb-[10px] pl-1 cursor-pointer">
-                            <Plus className="h-[26px] w-[26px]" />
+                    {/* Input Area - Current iOS Style */}
+                    <div className="flex items-end gap-2 bg-[#f6f6f6] dark:bg-[#1c1c1e] px-2 py-[8px] z-10 relative border-t border-gray-200/60 dark:border-gray-800/60">
+                        <div className="text-[#00A884] pb-[7px] pl-1 cursor-pointer">
+                            <Plus className="h-[28px] w-[28px]" strokeWidth={2} />
                         </div>
-                        <div className="flex-1 bg-white dark:bg-[#2a3942] rounded-[24px] flex items-end min-h-[42px] mb-0 pl-3 pr-2 py-1.5 shadow-sm">
-                            <Smile className="h-6 w-6 text-[#54656f] dark:text-[#aebac1] shrink-0 mb-[3px] cursor-pointer" />
+                        <div className="flex-1 bg-white dark:bg-[#2c2c2e] border border-gray-300/60 dark:border-gray-700 rounded-[20px] flex items-end min-h-[36px] mb-[3px] pl-3 pr-2 py-[5px]">
                             <textarea
                                 value={inputText}
                                 onChange={(e) => setInputText(e.target.value)}
@@ -207,24 +209,27 @@ export function WhatsAppDemo() {
                                         handleSend();
                                     }
                                 }}
-                                placeholder="Mesaj yazın"
-                                className="flex-1 bg-transparent border-none focus:ring-0 outline-none resize-none px-2 max-h-[100px] text-[#111b21] dark:text-[#e9edef] text-[15px] placeholder:text-[#8696a0] leading-[20px] pt-[2px]"
+                                placeholder="Mesaj..."
+                                className="flex-1 bg-transparent border-none focus:ring-0 outline-none resize-none px-1 max-h-[100px] text-black dark:text-white text-[16px] placeholder:text-gray-400 leading-[22px]"
                                 rows={1}
-                                style={{ minHeight: '24px' }}
+                                style={{ minHeight: '22px' }}
                             />
-                            {!inputText.trim() && (
-                                <Camera className="h-6 w-6 text-[#54656f] dark:text-[#aebac1] shrink-0 mb-[3px] ml-2 cursor-pointer" />
-                            )}
+                            <Sticker className="h-[22px] w-[22px] text-[#00A884] shrink-0 mb-[1px] ml-1 cursor-pointer" strokeWidth={1.5} />
                         </div>
                         
-                        <div 
-                            className="h-[42px] w-[42px] shrink-0 rounded-full flex items-center justify-center bg-[#00a884] text-white cursor-pointer shadow-sm mb-0 transition-transform active:scale-95"
-                            onClick={inputText.trim() ? handleSend : undefined}
-                        >
-                            {inputText.trim() ? (
-                                <Send className="h-5 w-5 ml-[2px]" />
+                        <div className="flex items-center gap-3 pb-[7px] pr-2">
+                            {!inputText.trim() ? (
+                                <>
+                                    <Camera className="h-[26px] w-[26px] text-[#00A884] cursor-pointer" strokeWidth={1.5} />
+                                    <Mic className="h-[26px] w-[26px] text-[#00A884] cursor-pointer" />
+                                </>
                             ) : (
-                                <Mic className="h-5 w-5" />
+                                <div 
+                                    className="h-[32px] w-[32px] rounded-full flex items-center justify-center bg-[#00A884] text-white cursor-pointer mb-[1px]"
+                                    onClick={handleSend}
+                                >
+                                    <Send className="h-[16px] w-[16px] ml-[2px]" strokeWidth={2.5} />
+                                </div>
                             )}
                         </div>
                     </div>
