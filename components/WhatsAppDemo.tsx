@@ -91,9 +91,9 @@ export function WhatsAppDemo() {
     return (
         <div className="w-[350px] sm:w-[400px] md:w-[434px] shadow-[0_0_40px_rgba(32,44,51,0.5)] rounded-[40px] transform-gpu">
             <Iphone>
-                <div className="flex h-full w-full flex-col bg-[#E5E5EA] dark:bg-[#000000] pt-12 pb-[30px] font-sans">
+                <div className="flex h-full w-full flex-col bg-[#E5E5EA] dark:bg-[#000000] pb-[30px] font-sans">
                     {/* Header - iOS Style */}
-                    <div className="flex items-center justify-between bg-[#f6f6f6]/95 dark:bg-[#1c1c1e]/95 backdrop-blur-md px-1 py-2.5 z-10 sticky top-0 border-b border-gray-200/50 dark:border-gray-800/50">
+                    <div className="flex items-center justify-between bg-[#f6f6f6]/95 dark:bg-[#1c1c1e]/95 backdrop-blur-md px-1 pt-14 pb-2.5 z-10 sticky top-0 border-b border-gray-200/50 dark:border-gray-800/50">
                         <div className="flex items-center cursor-pointer">
                             <div className="flex items-center text-[#00A884]">
                                 <ChevronLeft className="h-8 w-8 -mr-1" strokeWidth={2} />
@@ -114,11 +114,11 @@ export function WhatsAppDemo() {
                     </div>
 
                     {/* Chat Area */}
-                    <div ref={scrollRef} className="flex-1 px-3 relative bg-[#e5e5ea] dark:bg-[#000000] overflow-y-auto will-change-scroll overscroll-contain">
+                    <div ref={scrollRef} className="flex-1 px-3 relative bg-[#efeae2] dark:bg-[#0b141a] overflow-y-auto will-change-scroll overscroll-contain">
                         {/* WhatsApp iOS pattern overlay */}
                         <div
-                            className="absolute inset-0 opacity-[0.35] dark:opacity-10 pointer-events-none z-0 bg-repeat"
-                            style={{ backgroundImage: "url('https://static.whatsapp.net/rsrc.php/v3/yl/r/rro_BxtZ_w4.png')", backgroundSize: "300px" }}
+                            className="absolute inset-0 opacity-[0.45] dark:opacity-[0.15] pointer-events-none z-0 bg-repeat mix-blend-multiply dark:mix-blend-overlay"
+                            style={{ backgroundImage: "url('https://static.whatsapp.net/rsrc.php/v3/yl/r/rro_BxtZ_w4.png')", backgroundSize: "350px" }}
                         />
                         <div className="flex flex-col gap-[2px] relative z-10 py-4">
                             {/* Date Badge iOS style */}
