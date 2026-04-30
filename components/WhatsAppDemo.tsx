@@ -51,7 +51,7 @@ export function WhatsAppDemo() {
         setIsSending(true);
 
         try {
-            const response = await fetch("https://emirardarendvia.app.n8n.cloud/webhook/94c8a966-6eed-4995-b100-52c13f3c6a24", {
+            const response = await fetch("https://mainrendvia.app.n8n.cloud/webhook/556d2cc7-4524-4bfe-827f-2e461b3abb94", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
