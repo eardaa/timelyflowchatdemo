@@ -14,14 +14,7 @@ interface Message {
 }
 
 export function WhatsAppDemo() {
-    const [messages, setMessages] = useState<Message[]>([
-        {
-            id: "1",
-            text: "Merhaba! Asistan ile nasıl iletişim kurabilirim?",
-            sender: "other",
-            time: "10:00",
-        },
-    ]);
+    const [messages, setMessages] = useState<Message[]>([]);
     const [inputText, setInputText] = useState("");
     const [isSending, setIsSending] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
