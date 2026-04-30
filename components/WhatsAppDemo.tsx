@@ -82,7 +82,7 @@ export function WhatsAppDemo() {
     };
 
     return (
-        <div className="w-[350px] sm:w-[400px] md:w-[434px] shadow-[0_0_40px_rgba(32,44,51,0.5)] rounded-[40px] transform-gpu">
+        <div className="w-[350px] sm:w-[400px] md:w-[434px] shadow-2xl rounded-[40px]">
             <Iphone>
                 <div className="flex h-full w-full flex-col bg-[#E5E5EA] dark:bg-[#000000] font-sans">
                     {/* Header - iOS Style */}
@@ -123,7 +123,7 @@ export function WhatsAppDemo() {
                     <div ref={scrollRef} className="flex-1 px-3 relative bg-[#efeae2] dark:bg-[#0b141a] overflow-y-auto will-change-scroll overscroll-contain">
                         {/* WhatsApp iOS pattern overlay */}
                         <div
-                            className="absolute inset-0 opacity-[0.45] dark:opacity-[0.15] pointer-events-none z-0 bg-repeat mix-blend-multiply dark:mix-blend-overlay"
+                            className="absolute inset-0 opacity-[0.08] dark:opacity-[0.04] pointer-events-none z-0 bg-repeat"
                             style={{ backgroundImage: "url('https://static.whatsapp.net/rsrc.php/v3/yl/r/rro_BxtZ_w4.png')", backgroundSize: "350px" }}
                         />
                         <div className="flex flex-col gap-[2px] relative z-10 py-4">
